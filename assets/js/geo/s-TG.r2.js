@@ -1,0 +1,1 @@
+window.FX_GEO_SUBS=window.FX_GEO_SUBS||{};window.FX_GEO_SUBS['TG']=[{"code":"C","name":"Centrale"},{"code":"K","name":"Kara"},{"code":"M","name":"Maritime (Région)"},{"code":"P","name":"Plateaux"},{"code":"S","name":"Savanes"}];

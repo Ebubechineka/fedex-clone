@@ -1,0 +1,1 @@
+window.FX_GEO_SUBS=window.FX_GEO_SUBS||{};window.FX_GEO_SUBS['AT']=[{"code":"1","name":"Burgenland"},{"code":"2","name":"Kärnten"},{"code":"3","name":"Niederösterreich"},{"code":"4","name":"Oberösterreich"},{"code":"5","name":"Salzburg"},{"code":"6","name":"Steiermark"},{"code":"7","name":"Tirol"},{"code":"8","name":"Vorarlberg"},{"code":"9","name":"Wien"}];

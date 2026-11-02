@@ -1,0 +1,1 @@
+window.FX_GEO_SUBS=window.FX_GEO_SUBS||{};window.FX_GEO_SUBS['KG']=[{"code":"B","name":"Batken"},{"code":"GB","name":"Bishkek Shaary"},{"code":"C","name":"Chüy"},{"code":"J","name":"Jalal-Abad"},{"code":"N","name":"Naryn"},{"code":"O","name":"Osh"},{"code":"GO","name":"Osh Shaary"},{"code":"T","name":"Talas"},{"code":"Y","name":"Ysyk-Köl"}];

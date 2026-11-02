@@ -1,0 +1,1 @@
+window.FX_GEO_SUBS=window.FX_GEO_SUBS||{};window.FX_GEO_SUBS['VU']=[{"code":"MAP","name":"Malampa"},{"code":"PAM","name":"Pénama"},{"code":"SAM","name":"Sanma"},{"code":"SEE","name":"Shéfa"},{"code":"TAE","name":"Taféa"},{"code":"TOB","name":"Torba"}];

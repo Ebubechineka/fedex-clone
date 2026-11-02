@@ -1,0 +1,1 @@
+window.FX_GEO_SUBS=window.FX_GEO_SUBS||{};window.FX_GEO_SUBS['SK']=[{"code":"BC","name":"Banskobystrický kraj"},{"code":"BL","name":"Bratislavský kraj"},{"code":"KI","name":"Košický kraj"},{"code":"NI","name":"Nitriansky kraj"},{"code":"PV","name":"Prešovský kraj"},{"code":"TC","name":"Trenčiansky kraj"},{"code":"TA","name":"Trnavský kraj"},{"code":"ZI","name":"Žilinský kraj"}];

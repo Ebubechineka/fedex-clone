@@ -1,0 +1,1 @@
+window.FX_GEO_SUBS=window.FX_GEO_SUBS||{};window.FX_GEO_SUBS['GM']=[{"code":"B","name":"Banjul"},{"code":"M","name":"Central River"},{"code":"L","name":"Lower River"},{"code":"N","name":"North Bank"},{"code":"U","name":"Upper River"},{"code":"W","name":"Western"}];

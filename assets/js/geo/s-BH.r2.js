@@ -1,0 +1,1 @@
+window.FX_GEO_SUBS=window.FX_GEO_SUBS||{};window.FX_GEO_SUBS['BH']=[{"code":"14","name":"Al Janūbīyah"},{"code":"15","name":"Al Muḩarraq"},{"code":"13","name":"Al ‘Āşimah"},{"code":"17","name":"Ash Shamālīyah"}];

@@ -1,0 +1,1 @@
+window.FX_GEO_SUBS=window.FX_GEO_SUBS||{};window.FX_GEO_SUBS['CY']=[{"code":"04","name":"Ammochostos"},{"code":"06","name":"Keryneia"},{"code":"03","name":"Larnaka"},{"code":"01","name":"Lefkosia"},{"code":"02","name":"Lemesos"},{"code":"05","name":"Pafos"}];

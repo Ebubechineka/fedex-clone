@@ -1,0 +1,1 @@
+window.FX_GEO_SUBS=window.FX_GEO_SUBS||{};window.FX_GEO_SUBS['NP']=[{"code":"P3","name":"Bagmati"},{"code":"P4","name":"Gandaki"},{"code":"P6","name":"Karnali"},{"code":"P1","name":"Koshi"},{"code":"P5","name":"Lumbini"},{"code":"P2","name":"Madhesh"},{"code":"P7","name":"Sudurpashchim"}];

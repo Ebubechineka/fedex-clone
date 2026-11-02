@@ -1,0 +1,1 @@
+window.FX_GEO_SUBS=window.FX_GEO_SUBS||{};window.FX_GEO_SUBS['MG']=[{"code":"T","name":"Antananarivo"},{"code":"D","name":"Antsiranana"},{"code":"F","name":"Fianarantsoa"},{"code":"M","name":"Mahajanga"},{"code":"A","name":"Toamasina"},{"code":"U","name":"Toliara"}];

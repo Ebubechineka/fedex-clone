@@ -1,0 +1,477 @@
+/* ==========================================================================
+   FedEx clone — working shipment tracking
+   Additive only. Every rule is scoped to .fx-trk or to the tracking modules,
+   so nothing else on the page is restyled.
+   Palette + type are FedEx's own: #4d148c purple, #ff6200 orange,
+   #007ab7 link blue, #de002e error red, FedEx Sans (inherited).
+   ========================================================================== */
+
+/* --- Reuse FedEx's own field-error pattern ------------------------------- */
+/* The hero panel is a fixed 90px box, so an error that simply flows below the
+   input ends up outside the panel and collides with the section underneath.
+   It is anchored inside the field and overlays the hint line instead — the
+   same place FedEx's own validation replaces that hint. */
+.fxg-tracking-module .fxg-field { position: relative; }
+
+.fxg-tracking-module .fxg-field__error_text { display: none; }
+.fxg-tracking-module .fxg-field__error_text.show {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 12;
+  display: flex;
+  align-items: flex-start;
+  gap: .375rem;
+  margin: 0;
+  padding: .1875rem 0;
+  background: #fff;
+  color: #de002e;
+  font-size: .8125rem;
+  line-height: 1.35;
+}
+.fxg-tracking-module .fxg-field__error_text.show svg { flex: 0 0 auto; margin-top: .28rem; }
+.fxg-tracking-module .fxg-field__input-text.is-invalid { border-color: #de002e !important; }
+
+/* While an error is showing, the hint gives up its space to it. */
+.fxg-tracking-module .fxg-field:has(.fxg-field__error_text.show) .fxg-field__hint_text {
+  visibility: hidden;
+}
+
+/* --- Shared tokens ------------------------------------------------------ */
+.fx-trk {
+  --fx-purple: #4d148c;
+  --fx-orange: #ff6200;
+  --fx-blue: #007ab7;
+  --fx-red: #de002e;
+  --fx-green: #167a3c;
+  --fx-ink: #333;
+  --fx-muted: #5c5c5c;
+  --fx-line: #e0e0e0;
+  --fx-bg: #fafafa;
+  width: 100%;
+  box-sizing: border-box;
+  font-family: inherit;
+  color: var(--fx-ink);
+  text-align: start;
+}
+.fx-trk *, .fx-trk *::before, .fx-trk *::after { box-sizing: border-box; }
+
+/* --- Result card -------------------------------------------------------- */
+.fx-trk__card {
+  margin-top: 1rem;
+  background: #fff;
+  border: 1px solid var(--fx-line);
+  border-top: 3px solid var(--fx-purple);
+  box-shadow: 0 1px 3px rgba(0, 0, 0, .1);
+  padding: 1.25rem 1.25rem 1.375rem;
+  animation: fx-trk-in .22s ease-out both;
+}
+@keyframes fx-trk-in {
+  from { opacity: 0; transform: translateY(4px); }
+  to   { opacity: 1; transform: none; }
+}
+
+.fx-trk__head {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: .625rem 1rem;
+  padding-bottom: 1rem;
+  border-bottom: 1px solid var(--fx-line);
+}
+.fx-trk__eyebrow {
+  width: 100%;
+  font-size: .6875rem;
+  font-weight: 700;
+  letter-spacing: .08em;
+  text-transform: uppercase;
+  color: var(--fx-muted);
+  margin: 0 0 -.125rem;
+}
+.fx-trk__number {
+  font-size: 1.375rem;
+  font-weight: 700;
+  letter-spacing: .02em;
+  color: var(--fx-purple);
+  margin: 0;
+  font-variant-numeric: tabular-nums;
+  overflow-wrap: anywhere;
+}
+.fx-trk__copy {
+  appearance: none;
+  background: none;
+  border: 0;
+  padding: .125rem .25rem;
+  margin: 0;
+  color: var(--fx-blue);
+  font: inherit;
+  font-size: .8125rem;
+  cursor: pointer;
+  text-decoration: underline;
+  text-underline-offset: .1875rem;
+}
+.fx-trk__copy:hover { color: #005f8f; }
+.fx-trk__copy:focus-visible { outline: 2px solid var(--fx-purple); outline-offset: 2px; }
+
+/* Status badge */
+.fx-trk__badge {
+  display: inline-flex;
+  align-items: center;
+  gap: .375rem;
+  padding: .3125rem .75rem;
+  border-radius: 999px;
+  font-size: .75rem;
+  font-weight: 700;
+  letter-spacing: .06em;
+  text-transform: uppercase;
+  line-height: 1.2;
+  white-space: nowrap;
+}
+.fx-trk__badge::before {
+  content: "";
+  width: .4375rem;
+  height: .4375rem;
+  border-radius: 50%;
+  background: currentColor;
+  flex: 0 0 auto;
+}
+.fx-trk__badge--delivered   { color: #fff; background: var(--fx-green); }
+.fx-trk__badge--transit     { color: #fff; background: var(--fx-purple); }
+.fx-trk__badge--out         { color: #fff; background: var(--fx-orange); }
+.fx-trk__badge--pending     { color: #fff; background: var(--fx-blue); }
+.fx-trk__badge--exception   { color: #fff; background: var(--fx-red); }
+.fx-trk__badge--unknown     { color: #fff; background: #6b6b6b; }
+
+/* Meta strip */
+.fx-trk__meta {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(8.5rem, 1fr));
+  gap: .75rem 1.25rem;
+  padding: .875rem 0 1.125rem;
+  margin: 0;
+  align-items: start;
+}
+.fx-trk__meta div { min-width: 0; }
+.fx-trk__meta dt {
+  font-size: .6875rem;
+  font-weight: 700;
+  letter-spacing: .08em;
+  text-transform: uppercase;
+  color: var(--fx-muted);
+  margin: 0 0 .1875rem;
+}
+.fx-trk__meta dd {
+  margin: 0;
+  font-size: .9375rem;
+  font-weight: 500;
+  line-height: 1.35;
+  overflow-wrap: anywhere;
+}
+
+/* --- Timeline ----------------------------------------------------------- */
+.fx-trk__tl-title {
+  font-size: .75rem;
+  font-weight: 700;
+  letter-spacing: .08em;
+  text-transform: uppercase;
+  color: var(--fx-muted);
+  margin: 0 0 .75rem;
+}
+/* Show roughly five scans without scrolling; the rest scroll from there. */
+.fx-trk__tl-wrap { position: relative; }
+/* soft fade at the bottom edge signals there is more history below */
+.fx-trk__tl-wrap::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  height: 2rem;
+  pointer-events: none;
+  background: linear-gradient(rgba(255, 255, 255, 0), #fff);
+}
+.fx-trk__tl-wrap.is-at-bottom::after { display: none; }
+
+.fx-trk__timeline {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  position: relative;
+  max-height: 17.5rem;
+  overflow-y: auto;
+  overscroll-behavior: contain;
+  padding-right: .25rem;
+}
+.fx-trk__ev {
+  position: relative;
+  display: grid;
+  grid-template-columns: 1.25rem 1fr;
+  gap: .875rem;
+  padding: 0 0 .875rem;
+  margin-bottom: 0;
+}
+.fx-trk__ev:last-child { padding-bottom: 0; }
+.fx-trk__timeline { padding-bottom: .25rem; }
+/* connector line */
+.fx-trk__ev::before {
+  content: "";
+  position: absolute;
+  left: .34375rem;
+  top: 1.0625rem;
+  bottom: -.0625rem;
+  width: 2px;
+  background: var(--fx-line);
+}
+.fx-trk__ev:last-child::before { display: none; }
+.fx-trk__dot {
+  width: .8125rem;
+  height: .8125rem;
+  margin-top: .25rem;
+  border-radius: 50%;
+  background: #fff;
+  border: 2px solid #b9b9b9;
+  position: relative;
+  z-index: 1;
+  flex: 0 0 auto;
+}
+.fx-trk__ev--latest .fx-trk__dot {
+  background: var(--fx-purple);
+  border-color: var(--fx-purple);
+  box-shadow: 0 0 0 3px rgba(77, 20, 140, .16);
+}
+.fx-trk__ev--delivered .fx-trk__dot { background: var(--fx-green); border-color: var(--fx-green); box-shadow: 0 0 0 3px rgba(22, 122, 60, .16); }
+.fx-trk__ev-body { min-width: 0; }
+.fx-trk__ev-when {
+  display: block;
+  font-size: .75rem;
+  font-weight: 500;
+  color: var(--fx-muted);
+  margin-bottom: .1875rem;
+  font-variant-numeric: tabular-nums;
+}
+.fx-trk__ev-status {
+  display: block;
+  font-size: .9375rem;
+  line-height: 1.4;
+  font-weight: 500;
+}
+.fx-trk__ev--latest .fx-trk__ev-status { font-weight: 700; }
+.fx-trk__ev-place {
+  display: block;
+  font-size: .8125rem;
+  color: var(--fx-muted);
+  margin-top: .125rem;
+}
+.fx-trk__here {
+  display: inline-block;
+  margin-left: .5rem;
+  padding: .0625rem .375rem;
+  border-radius: .1875rem;
+  background: rgba(77, 20, 140, .1);
+  color: var(--fx-purple);
+  font-size: .625rem;
+  font-weight: 700;
+  letter-spacing: .07em;
+  text-transform: uppercase;
+  vertical-align: .0625rem;
+}
+
+/* --- States: loading / not found / error -------------------------------- */
+.fx-trk__state {
+  margin-top: 1rem;
+  border: 1px solid var(--fx-line);
+  border-left: 4px solid var(--fx-blue);
+  background: var(--fx-bg);
+  padding: 1.125rem 1.25rem;
+  display: flex;
+  align-items: center;
+  gap: .875rem;
+  animation: fx-trk-in .22s ease-out both;
+}
+.fx-trk__state p { margin: 0; font-size: .9375rem; line-height: 1.45; }
+.fx-trk__state strong { display: block; font-size: 1rem; margin-bottom: .1875rem; }
+.fx-trk__state--notfound { border-left-color: var(--fx-red); background: #fdf6f7; }
+.fx-trk__state--error { border-left-color: var(--fx-red); background: #fdf6f7; }
+.fx-trk__state-ico { flex: 0 0 auto; }
+
+/* Spinner */
+.fx-trk__spinner {
+  width: 1.375rem;
+  height: 1.375rem;
+  flex: 0 0 auto;
+  border-radius: 50%;
+  border: 2.5px solid rgba(255, 98, 0, .22);
+  border-top-color: var(--fx-orange);
+  animation: fx-trk-spin .7s linear infinite;
+}
+@keyframes fx-trk-spin { to { transform: rotate(360deg); } }
+
+/* Muted footnote line inside the card */
+.fx-trk__note {
+  margin: .875rem 0 0;
+  font-size: .75rem;
+  line-height: 1.45;
+  color: var(--fx-muted);
+}
+.fx-trk__note a { color: var(--fx-blue); }
+
+/* Demo-mode marker — honest about where the data came from */
+.fx-trk__demo-tag {
+  display: inline-flex;
+  align-items: center;
+  gap: .3125rem;
+  margin-left: auto;
+  padding: .1875rem .5rem;
+  border: 1px dashed #b9b9b9;
+  border-radius: .1875rem;
+  font-size: .625rem;
+  font-weight: 700;
+  letter-spacing: .08em;
+  text-transform: uppercase;
+  color: var(--fx-muted);
+  white-space: nowrap;
+}
+
+/* --- Result dialog ------------------------------------------------------
+   The result is presented in a dialog so the page's own layout — hero
+   height, every section below it — stays exactly as designed.
+   ---------------------------------------------------------------------- */
+body.fx-trk-locked { overflow: hidden; }
+
+.fx-trk-dialog[hidden] { display: none; }
+.fx-trk-dialog {
+  position: fixed;
+  inset: 0;
+  z-index: 2147483000;
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+  padding: 5vh 1rem 2rem;
+  overflow-y: auto;
+  font-family: "FedEx Sans", FedExSans, Arial, sans-serif;
+}
+.fx-trk-dialog__scrim {
+  position: fixed;
+  inset: 0;
+  background: rgba(20, 0, 40, .55);
+  animation: fx-trk-fade .18s ease-out both;
+}
+@keyframes fx-trk-fade { from { opacity: 0; } to { opacity: 1; } }
+
+.fx-trk-dialog__box {
+  position: relative;
+  z-index: 1;
+  width: 100%;
+  max-width: 44rem;
+  background: #fff;
+  border-top: 4px solid #4d148c;
+  box-shadow: 0 18px 48px rgba(0, 0, 0, .28);
+  animation: fx-trk-pop .2s ease-out both;
+  /* never taller than the screen — the body scrolls instead */
+  max-height: 92vh;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+}
+.fx-trk-dialog__body {
+  padding: 0 1.25rem 1.75rem;
+  overflow-y: auto;
+  overscroll-behavior: contain;
+  scroll-padding-bottom: 1.75rem;
+}
+@keyframes fx-trk-pop {
+  from { opacity: 0; transform: translateY(-10px); }
+  to   { opacity: 1; transform: none; }
+}
+.fx-trk-dialog__bar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  padding: .625rem 1.25rem;
+  border-bottom: 1px solid #e0e0e0;
+  position: sticky;
+  top: 0;
+  background: #fff;
+  z-index: 2;
+  flex: 0 0 auto;
+}
+.fx-trk-dialog__title {
+  margin: 0;
+  font-size: 1rem;
+  font-weight: 700;
+  letter-spacing: .08em;
+  text-transform: uppercase;
+  color: #4d148c;
+}
+.fx-trk-dialog__close {
+  appearance: none;
+  border: 0;
+  background: none;
+  padding: .5rem;
+  margin: -.25rem -.5rem -.25rem 0;
+  color: #333;
+  cursor: pointer;
+  border-radius: 50%;
+  line-height: 0;
+  min-width: 44px;
+  min-height: 44px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+.fx-trk-dialog__close:hover { background: #f2f2f2; color: #4d148c; }
+.fx-trk-dialog__close:focus-visible { outline: 2px solid #4d148c; outline-offset: 2px; }
+.fx-trk-dialog__body .fx-trk__card {
+  border: 0;
+  border-top: 0;
+  box-shadow: none;
+  margin-top: 0;
+  padding: 1rem 0 0;
+  animation: none;
+}
+.fx-trk-dialog__body .fx-trk__state { margin-top: 1rem; }
+
+@media (prefers-reduced-motion: reduce) {
+  .fx-trk-dialog__scrim, .fx-trk-dialog__box { animation: none; }
+}
+@media (max-width: 767px) {
+  .fx-trk-dialog { padding: 0; align-items: flex-end; }
+  .fx-trk-dialog__box { max-width: 100%; border-top-width: 3px; }
+  .fx-trk-dialog__body { padding: 0 1rem 1rem; }
+}
+
+/* --- Header dropdown variant: keep it inside the menu ------------------- */
+/* A pinned dropdown stays open even if the pointer leaves, so the tracking
+   field can be typed into. Uses the site's own open class behaviour. */
+.fxg-dropdown__item--pinned { position: relative; }
+.fxg-dropdown__item--pinned > .fxg-dropdown__sub-menu {
+  display: block;
+  z-index: 1200;
+  max-height: 80vh;
+  overflow-y: auto;
+}
+
+.fx-trk--compact .fx-trk__card,
+.fx-trk--compact .fx-trk__state {
+  max-height: 60vh;
+  overflow-y: auto;
+  margin-top: .75rem;
+  padding: .875rem .875rem 1rem;
+}
+.fx-trk--compact .fx-trk__number { font-size: 1.0625rem; }
+.fx-trk--compact .fx-trk__meta { grid-template-columns: repeat(auto-fit, minmax(7rem, 1fr)); padding: .75rem 0; }
+.fx-trk--compact .fx-trk__ev { padding-bottom: .875rem; }
+
+/* --- Motion + small screens -------------------------------------------- */
+@media (prefers-reduced-motion: reduce) {
+  .fx-trk__card, .fx-trk__state { animation: none; }
+  .fx-trk__spinner { animation-duration: 1.6s; }
+}
+@media (max-width: 767px) {
+  .fx-trk__card { padding: 1rem; }
+  .fx-trk__number { font-size: 1.1875rem; }
+  .fx-trk__badge { order: 3; }
+  .fx-trk__demo-tag { order: 4; margin-left: 0; }
+}

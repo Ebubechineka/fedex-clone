@@ -1,0 +1,1 @@
+window.FX_GEO_SUBS=window.FX_GEO_SUBS||{};window.FX_GEO_SUBS['PK']=[{"code":"JK","name":"Azad Jammu and Kashmir"},{"code":"BA","name":"Balochistan"},{"code":"GB","name":"Gilgit-Baltistan"},{"code":"IS","name":"Islamabad"},{"code":"KP","name":"Khyber Pakhtunkhwa"},{"code":"PB","name":"Punjab"},{"code":"SD","name":"Sindh"}];

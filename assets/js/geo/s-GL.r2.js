@@ -1,0 +1,1 @@
+window.FX_GEO_SUBS=window.FX_GEO_SUBS||{};window.FX_GEO_SUBS['GL']=[{"code":"AV","name":"Avannaata Kommunia"},{"code":"KU","name":"Kommune Kujalleq"},{"code":"QT","name":"Kommune Qeqertalik"},{"code":"SM","name":"Kommuneqarfik Sermersooq"},{"code":"QE","name":"Qeqqata Kommunia"}];

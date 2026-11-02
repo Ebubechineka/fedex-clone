@@ -1,0 +1,1 @@
+window.FX_GEO_SUBS=window.FX_GEO_SUBS||{};window.FX_GEO_SUBS['AG']=[{"code":"10","name":"Barbuda"},{"code":"11","name":"Redonda"},{"code":"03","name":"Saint George"},{"code":"04","name":"Saint John"},{"code":"05","name":"Saint Mary"},{"code":"06","name":"Saint Paul"},{"code":"07","name":"Saint Peter"},{"code":"08","name":"Saint Philip"}];

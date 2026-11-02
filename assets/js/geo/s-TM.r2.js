@@ -1,0 +1,1 @@
+window.FX_GEO_SUBS=window.FX_GEO_SUBS||{};window.FX_GEO_SUBS['TM']=[{"code":"A","name":"Ahal"},{"code":"S","name":"Aşgabat"},{"code":"B","name":"Balkan"},{"code":"D","name":"Daşoguz"},{"code":"L","name":"Lebap"},{"code":"M","name":"Mary"}];

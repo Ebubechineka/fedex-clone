@@ -1,0 +1,1 @@
+window.FX_GEO_SUBS=window.FX_GEO_SUBS||{};window.FX_GEO_SUBS['AD']=[{"code":"07","name":"Andorra la Vella"},{"code":"02","name":"Canillo"},{"code":"03","name":"Encamp"},{"code":"08","name":"Escaldes-Engordany"},{"code":"04","name":"La Massana"},{"code":"05","name":"Ordino"},{"code":"06","name":"Sant Julià de Lòria"}];

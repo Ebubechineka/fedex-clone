@@ -1,0 +1,1 @@
+window.FX_GEO_SUBS=window.FX_GEO_SUBS||{};window.FX_GEO_SUBS['HT']=[{"code":"AR","name":"Artibonite"},{"code":"CE","name":"Centre"},{"code":"GA","name":"Grande’Anse"},{"code":"NI","name":"Nippes"},{"code":"ND","name":"Nord"},{"code":"NE","name":"Nord-Est"},{"code":"NO","name":"Nord-Ouest"},{"code":"OU","name":"Ouest"},{"code":"SD","name":"Sud"},{"code":"SE","name":"Sud-Est"}];

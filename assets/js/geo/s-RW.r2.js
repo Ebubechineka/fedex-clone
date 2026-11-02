@@ -1,0 +1,1 @@
+window.FX_GEO_SUBS=window.FX_GEO_SUBS||{};window.FX_GEO_SUBS['RW']=[{"code":"01","name":"City of Kigali"},{"code":"02","name":"Eastern"},{"code":"03","name":"Northern"},{"code":"05","name":"Southern"},{"code":"04","name":"Western"}];

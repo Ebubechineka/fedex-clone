@@ -1,0 +1,144 @@
+/* ==========================================================================
+   fx-clone-interactions.r1.css
+   Only the styles needed by the repaired controls. Uses the clone's own
+   palette so nothing looks out of place.
+   ========================================================================== */
+
+/* --- Mobile menu ------------------------------------------------------- */
+@media (max-width: 1024px) {
+  .fxg-nav--mobile-menu-open .fxg-dropdown.fxg-global-nav {
+    display: block;
+    position: absolute;
+    inset-block-start: 75px;
+    inset-inline: 0;
+    width: 100%;
+    max-width: 100%;
+    height: auto;
+    max-height: calc(100vh - 75px);
+    overflow-y: auto;
+    background: #fafafa;
+    box-shadow: 0 12px 24px rgba(0, 0, 0, .18);
+    z-index: 12;
+  }
+  .fxg-nav--mobile-menu-open .fxg-dropdown__item > .fxg-link {
+    display: block;
+    padding: 16px 20px;
+    border-block-end: 1px solid rgba(182, 182, 182, .5);
+    color: #333;
+    font-weight: 500;
+  }
+  .fxg-nav--mobile-menu-open .fxg-dropdown__item--open > .fxg-link {
+    background: #4d148c;
+    color: #fff;
+  }
+  .fxg-nav--mobile-menu-open .fxg-dropdown__sub-menu {
+    display: block;
+    position: static;
+    width: 100%;
+    box-shadow: none;
+    background: #fff;
+  }
+  .fxg-nav--mobile-menu-open .fxg-dropdown__sub-menu .fxg-link {
+    display: block;
+    padding: 13px 20px;
+    border-block-end: 1px solid rgba(182, 182, 182, .35);
+    font-size: .875rem;
+    color: #333;
+  }
+  body.fx-menu-open { overflow: hidden; }
+}
+
+/* --- Sign-in utility dropdown ------------------------------------------ */
+/* The wrapper must be the positioning context, otherwise the panel anchors
+   to a distant ancestor and lands on top of its own trigger (which made a
+   second click impossible). */
+.fxg-user-options__option.fxg-user-options__sign-in { position: relative; }
+.fxg-user-options__option.fxg-dropdown__item--open > .fxg-dropdown__sub-menu {
+  display: block;
+  position: absolute;
+  inset-block-start: 100%;
+  inset-inline-end: 0;
+  min-width: 17rem;
+  max-height: calc(100vh - 100px);
+  overflow-y: auto;
+  background: #fff;
+  box-shadow: 0 10px 24px rgba(0, 0, 0, .18);
+  z-index: 30;
+  padding: .75rem 0;
+}
+.fxg-user-options__option.fxg-dropdown__item--open > .fxg-dropdown__sub-menu .fxg-link {
+  display: block;
+  padding: 10px 18px;
+  color: #333;
+  font-size: .875rem;
+}
+.fxg-user-options__option.fxg-dropdown__item--open > .fxg-dropdown__sub-menu .fxg-link:hover {
+  background: #fafafa;
+  text-decoration: none;
+}
+
+/* --- Header search ------------------------------------------------------ */
+/* FedEx's own CSS sets the icon to display:none while the search panel is
+   open, which leaves the visitor with no way to close it. Keep the icon
+   visible so it works as a toggle. */
+.fxg-nav--search-open .fxg-user-options__search-btn {
+  display: block !important;
+}
+.fxg-nav--search-open .fxg-user-options__search {
+  display: block;
+  position: absolute;
+  inset-block-start: 100%;
+  inset-inline-end: 0;
+  width: 22rem;
+  max-width: calc(100vw - 2rem);
+  background: #fff;
+  padding: .75rem 1rem;
+  box-shadow: 0 10px 24px rgba(0, 0, 0, .18);
+  z-index: 30;
+}
+.fxg-nav--search-open .fxg-user-options__search input {
+  width: 100%;
+  padding: .625rem .75rem;
+  border: 1px solid #b6b6b6;
+  border-radius: 2px;
+  font-size: .9375rem;
+}
+
+/* --- Hero cube panels --------------------------------------------------- */
+.fxg-app-container[hidden] { display: none !important; }
+.fxg-app-container.fxg-app--active { display: block; }
+
+.fx-cube-cta {
+  padding: 1.25rem 0 .5rem;
+}
+.fx-cube-cta__lead {
+  margin: 0 0 .75rem;
+  font-size: .9375rem;
+  color: #333;
+}
+.fx-cube-cta__btn {
+  display: inline-block;
+  padding: .75rem 1.5rem;
+  background: #4d148c;
+  color: #fff !important;
+  font-weight: 600;
+  font-size: .9375rem;
+  border-radius: 2px;
+  text-decoration: none !important;
+}
+.fx-cube-cta__btn:hover { background: #3a0f6a; }
+
+/* --- Skip link ---------------------------------------------------------- */
+.fxg-skip-to-main-content:focus {
+  position: absolute;
+  inset-block-start: .5rem;
+  inset-inline-start: .5rem;
+  z-index: 9999;
+  background: #fff;
+  color: #4d148c;
+  padding: .5rem .875rem;
+  border: 2px solid #4d148c;
+  border-radius: 2px;
+  font-size: .875rem;
+  text-decoration: none;
+}

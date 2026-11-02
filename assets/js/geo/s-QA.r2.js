@@ -1,0 +1,1 @@
+window.FX_GEO_SUBS=window.FX_GEO_SUBS||{};window.FX_GEO_SUBS['QA']=[{"code":"DA","name":"Ad Dawḩah"},{"code":"KH","name":"Al Khawr wa adh Dhakhīrah"},{"code":"WA","name":"Al Wakrah"},{"code":"RA","name":"Ar Rayyān"},{"code":"MS","name":"Ash Shamāl"},{"code":"SH","name":"Ash Shīḩānīyah"},{"code":"ZA","name":"Az̧ Z̧a‘āyin"},{"code":"US","name":"Umm Şalāl"}];

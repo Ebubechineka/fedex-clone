@@ -1,0 +1,1 @@
+window.FX_GEO_SUBS=window.FX_GEO_SUBS||{};window.FX_GEO_SUBS['ST']=[{"code":"02","name":"Cantagalo"},{"code":"03","name":"Caué"},{"code":"04","name":"Lembá"},{"code":"05","name":"Lobata"},{"code":"06","name":"Mé-Zóchi"},{"code":"P","name":"Príncipe"},{"code":"01","name":"Água Grande"}];

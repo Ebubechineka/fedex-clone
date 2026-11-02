@@ -1,0 +1,1 @@
+window.FX_GEO_SUBS=window.FX_GEO_SUBS||{};window.FX_GEO_SUBS['ZA']=[{"code":"EC","name":"Eastern Cape"},{"code":"FS","name":"Free State"},{"code":"GP","name":"Gauteng"},{"code":"KZN","name":"Kwazulu-Natal"},{"code":"LP","name":"Limpopo"},{"code":"MP","name":"Mpumalanga"},{"code":"NW","name":"North-West"},{"code":"NC","name":"Northern Cape"},{"code":"WC","name":"Western Cape"}];

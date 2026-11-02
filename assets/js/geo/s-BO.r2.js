@@ -1,0 +1,1 @@
+window.FX_GEO_SUBS=window.FX_GEO_SUBS||{};window.FX_GEO_SUBS['BO']=[{"code":"H","name":"Chuquisaca"},{"code":"C","name":"Cochabamba"},{"code":"B","name":"El Beni"},{"code":"L","name":"La Paz"},{"code":"O","name":"Oruro"},{"code":"N","name":"Pando"},{"code":"P","name":"Potosí"},{"code":"S","name":"Santa Cruz"},{"code":"T","name":"Tarija"}];

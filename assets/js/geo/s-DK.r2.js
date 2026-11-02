@@ -1,0 +1,1 @@
+window.FX_GEO_SUBS=window.FX_GEO_SUBS||{};window.FX_GEO_SUBS['DK']=[{"code":"84","name":"Hovedstaden"},{"code":"82","name":"Midtjylland"},{"code":"81","name":"Nordjylland"},{"code":"85","name":"Sjælland"},{"code":"83","name":"Syddanmark"}];

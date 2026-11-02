@@ -1,0 +1,1 @@
+window.FX_GEO_SUBS=window.FX_GEO_SUBS||{};window.FX_GEO_SUBS['BY']=[{"code":"BR","name":"Bresckaja voblasć"},{"code":"HO","name":"Homieĺskaja voblasć"},{"code":"HM","name":"Horad Minsk"},{"code":"HR","name":"Hrodzienskaja voblasć"},{"code":"MA","name":"Mahilioŭskaja voblasć"},{"code":"MI","name":"Minskaja voblasć"},{"code":"VI","name":"Viciebskaja voblasć"}];

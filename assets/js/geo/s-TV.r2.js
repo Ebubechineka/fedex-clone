@@ -1,0 +1,1 @@
+window.FX_GEO_SUBS=window.FX_GEO_SUBS||{};window.FX_GEO_SUBS['TV']=[{"code":"FUN","name":"Funafuti"},{"code":"NMG","name":"Nanumaga"},{"code":"NMA","name":"Nanumea"},{"code":"NIT","name":"Niutao"},{"code":"NUI","name":"Nui"},{"code":"NKF","name":"Nukufetau"},{"code":"NKL","name":"Nukulaelae"},{"code":"VAI","name":"Vaitupu"}];

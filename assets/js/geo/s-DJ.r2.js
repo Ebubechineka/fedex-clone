@@ -1,0 +1,1 @@
+window.FX_GEO_SUBS=window.FX_GEO_SUBS||{};window.FX_GEO_SUBS['DJ']=[{"code":"AS","name":"Ali Sabieh"},{"code":"AR","name":"Arta"},{"code":"DI","name":"Dikhil"},{"code":"DJ","name":"Djibouti"},{"code":"OB","name":"Obock"},{"code":"TA","name":"Tadjourah"}];

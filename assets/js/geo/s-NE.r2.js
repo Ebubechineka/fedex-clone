@@ -1,0 +1,1 @@
+window.FX_GEO_SUBS=window.FX_GEO_SUBS||{};window.FX_GEO_SUBS['NE']=[{"code":"1","name":"Agadez"},{"code":"2","name":"Diffa"},{"code":"3","name":"Dosso"},{"code":"4","name":"Maradi"},{"code":"8","name":"Niamey"},{"code":"5","name":"Tahoua"},{"code":"6","name":"Tillabéri"},{"code":"7","name":"Zinder"}];

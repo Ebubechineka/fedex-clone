@@ -1,0 +1,1 @@
+window.FX_GEO_SUBS=window.FX_GEO_SUBS||{};window.FX_GEO_SUBS['TO']=[{"code":"01","name":"'Eua"},{"code":"02","name":"Ha'apai"},{"code":"03","name":"Niuas"},{"code":"04","name":"Tongatapu"},{"code":"05","name":"Vava'u"}];

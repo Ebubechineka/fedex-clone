@@ -1,0 +1,288 @@
+/* ---------------------------------------------------------------------------
+   fx-address.r1.css — Country / State-Region / Postcode cascade
+   Works inside .fxp__field (pickup, rates, support, signup) and
+   .fx-shp__field (create-shipment). Tokens come from the clone's palette.
+   --------------------------------------------------------------------------- */
+
+.fxa {
+  position: relative;
+  display: block;
+  min-width: 0;
+}
+
+/* --- trigger ------------------------------------------------------------ */
+.fxa__btn {
+  -webkit-appearance: none;
+  appearance: none;
+  display: flex;
+  align-items: center;
+  gap: .5rem;
+  width: 100%;
+  min-height: 2.75rem;
+  padding: .5rem .75rem;
+  font: inherit;
+  font-size: .9375rem;
+  line-height: 1.4;
+  color: var(--fx-ink, #2f2f2f);
+  text-align: left;
+  background: #fff;
+  border: 1px solid var(--fx-line, #c9c9c9);
+  border-radius: .25rem;
+  cursor: pointer;
+  transition: border-color .15s ease, box-shadow .15s ease;
+}
+
+.fxa__btn:hover { border-color: #8a8a8a; }
+
+.fxa__btn:focus-visible,
+.fxa__btn[aria-expanded="true"] {
+  outline: none;
+  border-color: var(--fx-purple, #4d148c);
+  box-shadow: 0 0 0 3px rgba(77, 20, 140, .18);
+}
+
+.fxa__btn[disabled] {
+  background: #f4f4f4;
+  color: #8a8a8a;
+  cursor: not-allowed;
+  border-color: #e2e2e2;
+}
+
+.fxa__flag {
+  flex: none;
+  font-size: 1.125rem;
+  line-height: 1;
+}
+
+.fxa__val {
+  flex: 1 1 auto;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.fxa__val--empty { color: #767676; }
+
+.fxa__caret {
+  flex: none;
+  width: 0;
+  height: 0;
+  margin-left: auto;
+  border-left: 4px solid transparent;
+  border-right: 4px solid transparent;
+  border-top: 5px solid #6b6b6b;
+  transition: transform .15s ease;
+}
+
+.fxa__btn[aria-expanded="true"] .fxa__caret { transform: rotate(180deg); }
+
+/* --- popover ------------------------------------------------------------ */
+.fxa__pop {
+  position: absolute;
+  z-index: 60;
+  top: calc(100% + .25rem);
+  left: 0;
+  right: 0;
+  min-width: 15rem;
+  background: #fff;
+  border: 1px solid #d5d5d5;
+  border-radius: .375rem;
+  box-shadow: 0 10px 28px rgba(0, 0, 0, .18);
+  display: none;
+  overflow: hidden;
+}
+
+.fxa__pop[data-open="1"] { display: block; }
+
+.fxa__searchwrap {
+  padding: .5rem;
+  border-bottom: 1px solid #ededed;
+  background: #fafafa;
+}
+
+.fxa__search {
+  width: 100%;
+  padding: .5rem .625rem;
+  font: inherit;
+  font-size: .9375rem;
+  color: var(--fx-ink, #2f2f2f);
+  background: #fff;
+  border: 1px solid #c9c9c9;
+  border-radius: .25rem;
+}
+
+.fxa__search:focus {
+  outline: none;
+  border-color: var(--fx-purple, #4d148c);
+  box-shadow: 0 0 0 3px rgba(77, 20, 140, .15);
+}
+
+.fxa__list {
+  margin: 0;
+  padding: .25rem 0;
+  list-style: none;
+  max-height: 16rem;
+  overflow-y: auto;
+  overscroll-behavior: contain;
+}
+
+.fxa__opt {
+  display: flex;
+  align-items: center;
+  gap: .5rem;
+  padding: .5rem .75rem;
+  font-size: .9375rem;
+  line-height: 1.35;
+  cursor: pointer;
+  color: var(--fx-ink, #2f2f2f);
+}
+
+.fxa__opt:hover,
+.fxa__opt[data-active="1"] {
+  background: #f2ecf8;
+}
+
+.fxa__opt[aria-selected="true"] {
+  font-weight: 700;
+  color: var(--fx-purple, #4d148c);
+}
+
+.fxa__opt[aria-selected="true"]::after {
+  content: "";
+  margin-left: auto;
+  width: .5rem;
+  height: .5rem;
+  border-radius: 50%;
+  background: var(--fx-purple, #4d148c);
+}
+
+.fxa__opt--muted { color: #767676; font-style: italic; cursor: default; }
+.fxa__opt--muted:hover { background: transparent; }
+
+.fxa__code {
+  flex: none;
+  min-width: 2.25rem;
+  font-size: .75rem;
+  font-weight: 700;
+  letter-spacing: .02em;
+  color: #6b6b6b;
+  text-transform: uppercase;
+}
+
+.fxa__empty {
+  padding: 1rem .75rem;
+  font-size: .875rem;
+  color: #6b6b6b;
+  line-height: 1.45;
+}
+
+.fxa__count {
+  padding: .375rem .75rem;
+  font-size: .75rem;
+  font-weight: 700;
+  letter-spacing: .04em;
+  text-transform: uppercase;
+  color: #767676;
+  background: #fafafa;
+  border-bottom: 1px solid #ededed;
+}
+
+/* --- hint under disabled controls --------------------------------------- */
+.fxa__hint {
+  display: flex;
+  align-items: flex-start;
+  gap: .375rem;
+  margin: .3125rem 0 0;
+  font-size: .75rem;
+  line-height: 1.4;
+  color: #6b6b6b;
+}
+
+.fxa__hint[hidden] { display: none; }
+
+.fxa__hint svg { flex: none; margin-top: .0625rem; }
+
+/* --- postcode inline format badge --------------------------------------- */
+.fxa__fmt {
+  display: block;
+  margin: .3125rem 0 0;
+  font-size: .75rem;
+  font-weight: 600;
+  color: #5f5f5f;
+}
+
+.fxa__fmt[hidden] { display: none; }
+
+/* --- create-shipment look & feel --------------------------------------- */
+.fx-shp__field .fxa__btn { min-height: 2.5rem; font-size: .9375rem; }
+
+/* --- mobile ------------------------------------------------------------- */
+@media (max-width: 600px) {
+  .fxa__pop {
+    position: fixed;
+    top: auto;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    max-height: 72vh;
+    border-radius: .75rem .75rem 0 0;
+    box-shadow: 0 -8px 32px rgba(0, 0, 0, .25);
+  }
+
+  .fxa__list { max-height: 52vh; }
+
+  .fxa__opt { padding: .6875rem .875rem; font-size: 1rem; }
+
+  /* tap-outside scrim */
+  .fxa__scrim {
+    position: fixed;
+    inset: 0;
+    z-index: 55;
+    background: rgba(0, 0, 0, .35);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .fxa__btn, .fxa__caret { transition: none; }
+}
+
+/* Lock the page behind the mobile sheet without losing scroll position. */
+body.fxa-noscroll { overflow: hidden; }
+
+/* The native select/input inside the state slot must inherit field styling
+   from the parent form's own rules (.fxp__field select / .fx-shp__field select). */
+.fxa .fxa__state {
+  width: 100%;
+  min-height: 2.75rem;
+  padding: .5rem 2rem .5rem .75rem;
+  font: inherit;
+  font-size: .9375rem;
+  color: var(--fx-ink, #2f2f2f);
+  background: #fff url("data:image/svg+xml;charset=utf-8,%3Csvg xmlns='http://www.w3.org/2000/svg' width='10' height='6'%3E%3Cpath d='M0 0l5 6 5-6z' fill='%236b6b6b'/%3E%3C/svg%3E") no-repeat right .75rem center;
+  border: 1px solid var(--fx-line, #c9c9c9);
+  border-radius: .25rem;
+  -webkit-appearance: none;
+  appearance: none;
+  cursor: pointer;
+}
+
+.fxa .fxa__state:focus {
+  outline: none;
+  border-color: var(--fx-purple, #4d148c);
+  box-shadow: 0 0 0 3px rgba(77, 20, 140, .18);
+}
+
+.fxa .fxa__state[disabled] {
+  background-color: #f4f4f4;
+  color: #8a8a8a;
+  cursor: not-allowed;
+  border-color: #e2e2e2;
+  background-image: none;
+}
+
+.fxa .fxa__state[aria-invalid="true"] {
+  border-color: var(--fx-red, #c8102e);
+  box-shadow: 0 0 0 3px rgba(200, 16, 46, .12);
+}
+
+.fx-shp__field .fxa .fxa__state { min-height: 2.5rem; }

@@ -1,0 +1,1 @@
+window.FX_GEO_SUBS=window.FX_GEO_SUBS||{};window.FX_GEO_SUBS['TJ']=[{"code":"DU","name":"Dushanbe"},{"code":"KT","name":"Khatlon"},{"code":"GB","name":"Kŭhistoni Badakhshon"},{"code":"SU","name":"Sughd"},{"code":"RA","name":"nohiyahoi tobei jumhurí"}];

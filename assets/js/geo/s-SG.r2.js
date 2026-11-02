@@ -1,0 +1,1 @@
+window.FX_GEO_SUBS=window.FX_GEO_SUBS||{};window.FX_GEO_SUBS['SG']=[{"code":"01","name":"Central Singapore"},{"code":"02","name":"North East"},{"code":"03","name":"North West"},{"code":"04","name":"South East"},{"code":"05","name":"South West"}];

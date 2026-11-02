@@ -1,0 +1,1 @@
+window.FX_GEO_SUBS=window.FX_GEO_SUBS||{};window.FX_GEO_SUBS['CR']=[{"code":"A","name":"Alajuela"},{"code":"C","name":"Cartago"},{"code":"G","name":"Guanacaste"},{"code":"H","name":"Heredia"},{"code":"L","name":"Limón"},{"code":"P","name":"Puntarenas"},{"code":"SJ","name":"San José"}];

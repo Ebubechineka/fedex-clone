@@ -1,0 +1,1 @@
+window.FX_GEO_SUBS=window.FX_GEO_SUBS||{};window.FX_GEO_SUBS['CM']=[{"code":"AD","name":"Adamaoua"},{"code":"CE","name":"Centre"},{"code":"ES","name":"East"},{"code":"EN","name":"Far North"},{"code":"LT","name":"Littoral"},{"code":"NO","name":"North"},{"code":"NW","name":"North-West"},{"code":"SU","name":"South"},{"code":"SW","name":"South-West"},{"code":"OU","name":"West"}];
